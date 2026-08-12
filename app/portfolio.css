@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+a { text-decoration: none; color: inherit; }
+::selection { background: rgba(232,163,61,0.14); color: #E8A33D; }
+*:focus-visible { outline: 2px solid #E8A33D; outline-offset: 3px; border-radius: 2px; }
+
+.glow-orb { position: absolute; z-index: 0; border-radius: 50%; filter: blur(90px); pointer-events: none; opacity: 0.18; }
+.gradient-text { background-image: linear-gradient(100deg, #F2C063, #45D0C0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.bg-grid-layer {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: linear-gradient(#232B3D 1px, transparent 1px), linear-gradient(90deg, #232B3D 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media (min-width: 768px) { .hero-grid { grid-template-columns: 1.3fr 0.7fr; } }
+
+.terminal-box { position: relative; overflow: hidden; }
+.terminal-box::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
+}
+.terminal-glow { text-shadow: 0 0 10px rgba(69,208,192,0.45); }
+
+.btn-primary { background-image: linear-gradient(135deg, #F2C063, #E8A33D); box-shadow: 0 6px 24px rgba(232,163,61,0.28); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(232,163,61,0.42); }
+.btn-outline { transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+.btn-outline:hover { border-color: #45D0C0; background: rgba(69,208,192,0.08); transform: translateY(-2px); }
+
+.card-hover { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.45); border-color: #232B3D !important; }
+.proj-card { transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; position: relative; overflow: hidden; }
+.proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background-image: linear-gradient(90deg, #E8A33D, #45D0C0); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+.proj-card:hover { border-color: transparent !important; transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+.proj-card:hover::before { transform: scaleX(1); }
+.proj-card:hover .arrow-ic { transform: translate(3px,-3px); }
+.arrow-ic { transition: transform 0.25s ease; }
+
+.pill:hover { background: rgba(232,163,61,0.14) !important; border-color: #E8A33D !important; color: #ECE9E2 !important; transform: translateY(-1px); }
+.pill { transition: all 0.2s ease; }
+
+.nav-link { position: relative; transition: color 0.2s ease; padding-bottom: 2px; }
+.nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: #E8A33D; transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+.nav-link:hover { color: #ECE9E2 !important; }
+.nav-link:hover::after { transform: scaleX(1); }
+
+.photo-frame { position: relative; }
+.photo-frame .halo { position: absolute; inset: -18px; border-radius: 28px; background-image: linear-gradient(135deg, #E8A33D, #45D0C0); opacity: 0.55; filter: blur(24px); }
+
+.divider { height: 1px; border: none; background-image: linear-gradient(90deg, transparent, #232B3D 20%, #232B3D 80%, transparent); }
+
+@keyframes blink { 50% { opacity: 0; } }
+.cursor-blink { animation: blink 1s step-start infinite; }
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+.float-slow { animation: floaty 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
